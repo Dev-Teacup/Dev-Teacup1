@@ -1,3 +1,4 @@
+// Page load animation
 onload = () => {
   const c = setTimeout(() => {
     document.body.classList.remove("not-loaded");
@@ -5,16 +6,12 @@ onload = () => {
   }, 1000);
 };
 
-// Wait for the first user interaction (e.g., a tap or click)
-document.addEventListener('click', function startAudio() {
-  const audio = document.getElementById('bgMusic');
+// Play sound when the button with class 'btn' is clicked
+document.querySelector('.btn').addEventListener('click', function() {
+  const audio = document.getElementById('btnSound');
   audio.play().then(() => {
-      // Audio started successfully
-      console.log('Audio is playing');
+    console.log('Button sound is playing');
   }).catch(error => {
-      // Handle any errors (e.g., user didn’t interact yet)
-      console.error('Error playing audio:', error);
+    console.error('Error playing button sound:', error);
   });
-  // Remove the event listener after the audio starts to avoid replaying on every click
-  document.removeEventListener('click', startAudio);
-}, { once: true });
+});
